@@ -1,0 +1,102 @@
+@keyframes dropIn {
+	0%{
+		transform: scale(1.2);
+		opacity: 0;
+		}
+	80% {
+		transform: scale(0.9);
+		}
+	100%{
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+@-o-keyframes dropIn {
+	0%{
+		-o-transform: scale(1.2);
+		opacity: 0;
+		}
+	80% {
+		-o-transform: scale(0.9);
+		}
+	100%{
+		-o-transform: scale(1);
+		opacity: 1;
+	}
+}
+@-moz-keyframes dropIn {
+	0%{
+		-moz-transform: scale(1.2);
+		opacity: 0;
+		}
+	80% {
+		-moz-transform: scale(0.9);
+		}
+	100%{
+		-moz-transform: scale(1);
+		opacity: 1;
+	}
+}
+@-webkit-keyframes dropIn {
+	0%{
+		-webkit-transform: scale(1.2);
+		opacity: 0;
+		}
+	80% {
+		-webkit-transform: scale(0.9);
+		}
+	100%{
+		-webkit-transform: scale(1);
+		opacity: 1;
+	}
+}
+
+#clock {
+	background: transparent;
+	text-align: center;
+	font-family: Inconsolata;
+	font-weight: bold;
+	font-size: 30pt;
+	padding: 10px 15px 10px 15px;
+	color: #555;
+	text-shadow: 0px 1px 2px rgba(255,255,255,0.5);
+	/*box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7) inset;*/
+}
+
+#clock > div {
+	display: inline-block;
+	width: 10pt; 
+	height: 40px;
+	padding: 0px 10px;
+	/*border: solid black 1px;*/
+}
+
+#clock > div > div {
+	/*background: #bbb;*/
+	border-radius: 5px;
+	padding: 0px 6px 0px 6px;
+	position: absolute;
+	/*box-shadow: 0px 0px 5px 0px black inset;*/
+}
+
+#clock div.clock-hidden {
+	display: none;
+}
+
+#clock > div > div.droppingOut {
+	display: none;
+}
+
+#clock > div > div.droppingIn {
+	display: block !important;
+	animation: dropIn 0.25s;
+	-o-animation: dropIn 0.25s;
+	-moz-animation: dropIn 0.25s;
+	-webkit-animation: dropIn 0.25s;
+}
+
+#clock .clock-sep {
+	width: 10px;
+	padding: 0px 5px 0px 0px;
+	line-height: 25pt;
+}

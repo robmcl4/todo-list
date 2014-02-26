@@ -1,0 +1,15 @@
+.Weather-daynight {
+	transition: background 3s;
+	-o-transition: background 3s;
+	-moz-transition: background 3s;
+	-webkit-transition: background 3s;
+}
+
+.Weather-nighttime {
+	background: black;
+	background: rgba(47, 64, 115, 0.4) !important;
+}
+
+.Weather-daytime {
+	background: rgba(89, 216, 255, 0.15) !important;
+}

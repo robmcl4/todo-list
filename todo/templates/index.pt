@@ -1,0 +1,123 @@
+<html>
+<head>
+	<title>To-Do List</title>
+	<link rel="stylesheet" type="text/css" href="static/styles/todo.css" />
+	<link rel="stylesheet" type="text/css" href="static/styles/clock.css" />
+	<link href='//fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Duru+Sans' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		<?python 
+			styling = ''
+			for imp in importances:
+				styling += '.imp-' + str(imp[0]) + '{'
+				styling += 'background:' + str(imp[1]) + ';\n}\n'
+		?>
+		${styling}
+	</style>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="static/scripts/todo.js"></script>
+	<script type="text/javascript" src="static/scripts/clock.js"></script>
+	<script type="text/javascript" src="static/scripts/weather.js"></script>
+</head>
+<body>
+	<div id="shade">
+		<div id="newtodo" class="popup">
+			<h2>New TODO</h2>
+			<p>Enter a new item</p>
+			<form action="insert_todo" method="post" onsubmit="return submitLock()">
+				<div class="input-container">
+					<label for="title">Title</label>
+						<input type="text" id="newtitle" name="title" style="width: 150pt" />
+				</div>
+				<div class="input-container">
+					<label for="days">Days</label>
+						<input type="text" id="newdays" name="days" style="width: 20pt" />
+				</div>
+				<div class="input-container">
+					<label for="imp">Importance</label>
+						<select id="imp" name="imp">
+							<option tal:repeat="imp importances" tal:attributes="value imp[2]" tal:content="imp[0]">
+							</option>
+						</select>
+				</div>
+				<div class="input-container">
+					<label for="desc">Description</label>
+						<textarea name="desc" id="newdesc"></textarea>
+				</div>
+				<input type="submit" value="Submit" />
+			</form>
+		</div>
+		<div id="info" class="popup">
+			<h2 id="info-title">Foo!</h2>
+			<p>
+				<span class="todo-importance">Important</span>
+				<span class="info-daysleft">10 Days Left</span>
+			</p>
+			<div id="description">fill</div>
+		</div>
+		<div id="help" class="popup">
+			<h2>Help</h2>
+			<p>
+				How to navigate this webapp:
+			</p>
+			<table>
+				<tr>
+					<td>n</td>
+					<td>new TODO</td>
+				</tr>
+				<tr>
+					<td>esc</td>
+					<td>close a prompt</td>
+				</tr>
+				<tr>
+					<td>i</td>
+					<td>see information for selected item</td>
+				</tr>
+				<tr>
+					<td>h</td>
+					<td>hide the currently selected item</td>
+				</tr>
+				<tr>
+					<td>u</td>
+					<td>unhide the last hidden item</td>
+				</tr>
+				<tr>
+					<td>j</td>
+					<td>go down 1 item</td>
+				</tr>
+				<tr>
+					<td>k</td>
+					<td>go up 1 item</td>
+				</tr>
+				<!--! Temporarily disabled <tr>
+					<td>l</td>
+					<td>logout</td>
+				</tr> -->
+			</table>
+		</div>
+	</div>
+	<div id="main-panel">
+		<a id="logout" href="logout">Logout</a>
+		<a id="helpLink" href="#" onclick="toggleHelp()">?</a>
+		<h1>TODO List</h1>
+		<div id="todos">
+			<div 
+				class="todo-elem" 
+				onclick="focusItem(this);"
+				tal:repeat="todo todos"
+				tal:attributes="id ('todo-' + str(todo[0]))"
+			>
+				<a class="todo-title" tal:content="todo[2]"></a>
+				<span tal:attributes="class ('todo-importance ' + 'imp-' + todo[1])"
+							tal:content="todo[1]"></span>
+				<span class="todo-daysleft" tal:content="todo[4]"></span>
+				<div class="hidden desc" tal:content="todo[3]"></div>
+			</div>
+		</div>
+	</div>
+	<div class="apis">
+		<div id="clock"></div>
+		<div id="weather"></div>
+	</div>
+</body>
+</html>

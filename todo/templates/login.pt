@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="./static/styles/todo.css" />
+	<style type="text/css">
+		input {
+			display: block;
+			margin: 100px auto 10px auto;
+			font-size: 50pt;
+			padding: 10px 0px 10px 0px;
+			outline: none;
+			border: none;
+			text-align: center;
+			background: rgba(0,0,0,0.1);
+			border-radius: 10px;
+			box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.5) inset;
+		}
+	</style>
+	<script type="text/javascript">
+		function cb_func() {
+			document.getElementById("focus_here").focus();
+		}
+	</script>
+</head>
+<body onload="cb_func()">
+	<form action="" method="post">
+		<input id="focus_here" type="password" name="passwd"/>
+	</form>
+</body>
+</html>
